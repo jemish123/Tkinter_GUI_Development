@@ -21,27 +21,51 @@ def button_clear():
 def button_add():
     first_number = input_field.get()
     global f_num
+    global math
+    math = "addition"
     f_num = int(first_number)
     input_field.delete(0, END)
 
 
-def button_subtract(first_num):
-    input_field.get()
+def button_subtract():
+    first_number = input_field.get()
+    global f_num
+    global math
+    math = "subtraction"
+    f_num = int(first_number)
+    input_field.delete(0, END)
 
 
-def button_multiply(first_num):
-    input_field.get()
+def button_multiply():
+    first_number = input_field.get()
+    global f_num
+    global math
+    math = "multiplication"
+    f_num = int(first_number)
+    input_field.delete(0, END)
 
 
-def button_division(first_num):
-    input_field.get()
+def button_division():
+    first_number = input_field.get()
+    global f_num
+    global math
+    math = "division"
+    f_num = int(first_number)
+    input_field.delete(0, END)
 
 
 def button_equal():
     second_number = input_field.get()
     input_field.delete(0, END)
-    input_field.insert(0, str(f_num + int(second_number)))
 
+    if math == "addition":
+        input_field.insert(0, str(f_num + int(second_number)))
+    if math == "subtraction":
+        input_field.insert(0, str(f_num - int(second_number)))
+    if math == "multiplication":
+        input_field.insert(0, str(f_num * int(second_number)))
+    if math == "division":
+        input_field.insert(0, str(f_num / int(second_number)))
 
 btn_1 = Button(root, text="1", padx=40, pady=20, command=lambda: button_clicked(1))
 btn_2 = Button(root, text="2", padx=40, pady=20, command=lambda: button_clicked(2))
@@ -56,7 +80,7 @@ btn_0 = Button(root, text="0", padx=40, pady=20, command=lambda: button_clicked(
 btn_dot = Button(root, text=".", padx=40, pady=20)
 btn_equal = Button(root, text="=", padx=40, pady=20, command=button_equal)
 btn_clear = Button(root, text="CLEAR", padx=20, pady=20, command=button_clear)
-btn_add = Button(root, text="+", padx=100, pady=20, command=button_add)
+btn_add = Button(root, text="+", padx=105, pady=20, command=button_add)
 btn_subtract = Button(root, text="-", padx=40, pady=20, command=button_subtract)
 btn_multiply = Button(root, text="*", padx=40, pady=20, command=button_multiply)
 btn_division = Button(root, text="/", padx=40, pady=20, command=button_division)
