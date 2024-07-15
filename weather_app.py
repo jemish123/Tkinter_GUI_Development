@@ -17,23 +17,28 @@ try:
     api = json.loads(api_request.content)
 
     city = api[0]['ReportingArea']
+    city_data_label = Label(frame, text=city)
+    city_data_label.grid(row=0, column=1)
+
     air_quality = api[0]['AQI']
+    air_quality_label = Label(frame, text=air_quality)
+    air_quality_label.grid(row=1, column=1)
+
     category = api[0]['Category']['Name']
+    cat_label = Label(frame, text=category)
+    cat_label.grid(row=2, column=1)
+
+    if category == "Good":
+        frame.configure(background="")
 except Exception as e:
     api = "Error..."
 
-label = Label(frame, text="City")
-label.grid(row=0, column=0)
-label = Label(frame, text=city)
-label.grid(row=0, column=1)
-label = Label(frame, text="Air Quality")
-label.grid(row=1, column=0)
-label = Label(frame, text=air_quality)
-label.grid(row=1, column=1)
-label = Label(frame, text="Category")
-label.grid(row=2, column=0)
-label = Label(frame, text=category)
-label.grid(row=2, column=1)
+city_label = Label(frame, text="City")
+city_label.grid(row=0, column=0)
+aqi_label = Label(frame, text="Air Quality")
+aqi_label.grid(row=1, column=0)
+category_label = Label(frame, text="Category")
+category_label.grid(row=2, column=0)
 
 
 root.mainloop()
